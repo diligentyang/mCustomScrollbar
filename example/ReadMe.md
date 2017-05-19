@@ -118,3 +118,108 @@ callback：Boolean | 执行回调函数当 scroll-to 完成之后，值：true�
 
 ![图解](./tujie.png)
 
+你可以通过调用mCustomScrollbar回调选项参数来触发你自己的js函数
+
+```
+$(".content").mCustomScrollbar({
+
+    callbacks:{
+
+        onScroll:function(){
+
+            myCustomFn(this);
+
+        }
+
+    }
+
+});
+
+
+
+function myCustomFn(el){
+
+    console.log(el.mcs.top);
+
+}
+```
+
+在上面的例子中，每个滚动事件结束的时间和内容已经停止滚动，内容顶部将被记录在浏览器的控制台。对于每个滚动事件都有对应的回调函数，如下：
+
+ onScrollStart -触发滚动事件开始的那一刻
+
+ whileScrolling -当滚动事件被触发运行
+
+ onScroll -触发滚动事件完成时
+
+ onTotalScroll -触发时，内容已经滚动一路向下或向右
+
+ onTotalScrollBack -触发时，内容已经滚动或离开所有的方式回到顶部
+
+您可以通过分别设置onTotalScrollOffset和onTotalScrollBackOffset，为onTotalScroll和onTotalScrollBack设置一个偏移值（像素）。例如，下面将触发回调函数，当内容已滚动至底部时减去100像素
+
+```
+$(".content").mCustomScrollbar({
+
+    callbacks:{
+
+        onTotalScroll:function(){
+
+            console.log("scrolled to bottom");
+
+        },
+
+    onTotalScrollOffset:100
+
+    }
+
+});
+```
+该脚本返回一个数字值和对象相关的滚动条
+
+
+this – 包含滚动条的原始元素（S）
+
+this.mcs.content – 原始内容包装为jQuery对象
+
+this.mcs.top – 内容的顶部位置（像素）
+
+this.mcs.left – 内容的左侧位置（像素）
+
+this.mcs.draggerTop – 滚动牵引机的顶部位置（像素）
+
+this.mcs.draggerLeft – 滚动条牵引机的左侧位置（像素）
+
+this.mcs.topPct – 内容垂直滚动的百分比
+
+this.mcs.leftPct – 内容水平滚动的百分比
+
+this.mcs.direction – 内容的滚动方向（Y或X）
+
+```
+$("#content_1").mCustomScrollbar({
+
+    callbacks:{
+
+        whileScrolling:function(){
+
+            myCustomFn(this);
+
+        }
+
+    }
+
+});
+
+
+
+function myCustomFn(el){
+
+    var msg="Content inside the element with id '"+el.attr("id")+"' has scrolled "+mcs.topPct+"%";
+
+  console.log(msg);
+
+}
+```
+
+
