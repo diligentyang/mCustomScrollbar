@@ -34,7 +34,14 @@
     <script>
         (function($){
             $(window).load(function(){
-                $("#content").mCustomScrollbar();
+                $("#content").mCustomScrollbar({
+                    scrollButtons:{
+                        enable:true,//是否显示上下箭头 注上下箭头的图片在 css/mCSB_buttons.png里面，要和css放一起
+                        scrollType:"continuous",
+                        scrollSpeed:20,
+                        scrollAmount:40
+                    },
+                });
             });
         })(jQuery);
     </script>
