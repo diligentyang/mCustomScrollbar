@@ -1,8 +1,42 @@
 <html>
 <head>
     <title>normal</title>
+    <style>
+        #content{
+            background: #0f0f0f;color:#fff0ff;height: 300px;width:400px;
+        }
+    </style>
+    <link href="../css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
 </head>
 <body>
+    <div id="content">
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+    </div>
 
+    <script src="../js/jquery-1.9.1.js"></script>
+    <script src="../js/jquery.mCustomScrollbar.js"></script>
+    <script>
+        (function($){
+            $(window).load(function(){
+                $("#content").mCustomScrollbar();
+            });
+        })(jQuery);
+    </script>
 </body>
 </html>
