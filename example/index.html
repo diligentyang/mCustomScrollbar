@@ -28,6 +28,14 @@
         11111111111111111111111111111<br>
         11111111111111111111111111111<br>
         11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
+        11111111111111111111111111111<br>
     </div>
     <div class="scroll-pct">11111111</div>
     <script src="../js/jquery-1.9.1.js"></script>
@@ -39,12 +47,20 @@
                 $("#content").mCustomScrollbar({
                     scrollButtons:{
                         enable:true,//是否显示上下箭头 注上下箭头的图片在 css/mCSB_buttons.png里面，要和css放一起
-                        scrollType:"continuous",
-                        scrollSpeed:20,
-                        scrollAmount:40
+                        //scrollType:"continuous",//点击滚动是否有停顿效果
+                        scrollType:"pixels",//点击滚动是否有停顿效果
+                        scrollSpeed:20,     //点击移动的速度
+                        scrollAmount:100 //点击滚动按钮移动的距离
                     },
-                    setTop:"-100px",
-                    autoDraggerLength: true,//自动调整滚动条的长度
+                    set_height:"300px",//设置可见内容的宽度
+                    theme:"light-thick",//以下是主题
+                    //theme:"rounded-dots",
+                    //theme:"dark-thin",
+                    //theme:"light-3",
+                    //theme:"3d-thick",
+                    //theme:"3d",
+                    //theme:"rounded-dark",
+                    autoDraggerLength: true,//根据内容区域自动调整滚动条拖块的长度 值:true,false
                     mouseWheelPixels: 40,//滚动一下移动的距离
                     autoHideScrollbar:false,//是否自动隐藏滚动条
                     callbacks: {
