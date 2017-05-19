@@ -1,5 +1,6 @@
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>normal</title>
     <style>
         #content{
@@ -41,9 +42,28 @@
                         scrollSpeed:20,
                         scrollAmount:40
                     },
+                    setTop:"-100px",
                     autoDraggerLength: true,//自动调整滚动条的长度
                     mouseWheelPixels: 40,//滚动一下移动的距离
                     autoHideScrollbar:false,//是否自动隐藏滚动条
+                    callbacks: {
+                        onScrollStart: function() {
+                           // $('body').append('滚动开始//');
+                        },
+                        onScroll: function() {
+                            //$('body').append('滚动结束//');
+                        },
+                        onTotalScroll: function() {
+                            //$('body').append('滚动至底部//');
+                        },
+                        onTotalScrollBack: function() {
+                           // $('body').append('滚动至顶部//');
+                        },
+                        whileScrolling: function() {
+                           // $('body').append('...滚动中...//');
+                        },
+                    },
+
                 });
             });
         })(jQuery);
