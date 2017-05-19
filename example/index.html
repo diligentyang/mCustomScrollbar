@@ -29,12 +29,13 @@
         11111111111111111111111111111<br>
         11111111111111111111111111111<br>
     </div>
-
+    <div class="scroll-pct">11111111</div>
     <script src="../js/jquery-1.9.1.js"></script>
     <script src="../js/jquery.mCustomScrollbar.js"></script>
     <script>
         (function($){
             $(window).load(function(){
+
                 $("#content").mCustomScrollbar({
                     scrollButtons:{
                         enable:true,//是否显示上下箭头 注上下箭头的图片在 css/mCSB_buttons.png里面，要和css放一起
@@ -61,6 +62,11 @@
                         },
                         whileScrolling: function() {
                            // $('body').append('...滚动中...//');
+
+                            $(".scroll-pct").html(mcs.topPct+"%");
+                            //if(mcs.topPct>90){
+                            //    alert("触发ajax");
+                            //}
                         },
                     },
 
