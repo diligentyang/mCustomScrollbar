@@ -4,7 +4,47 @@
     <title>normal</title>
     <style>
         #content{
-            background: #0f0f0f;color:#fff0ff;height: 300px;width:400px;
+            background: #0f0f0f;color:#fff0ff;height: 300px;width:300px;
+        }
+        .spinner {
+            width: 20px;
+            height: 20px;
+            position: relative;
+            margin: 10px auto;
+        }
+
+        .double-bounce1, .double-bounce2 {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background-color: #67CF22;
+            opacity: 0.6;
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            -webkit-animation: bounce 2.0s infinite ease-in-out;
+            animation: bounce 2.0s infinite ease-in-out;
+        }
+
+        .double-bounce2 {
+            -webkit-animation-delay: -1.0s;
+            animation-delay: -1.0s;
+        }
+
+        @-webkit-keyframes bounce {
+            0%, 100% { -webkit-transform: scale(0.0) }
+            50% { -webkit-transform: scale(1.0) }
+        }
+
+        @keyframes bounce {
+            0%, 100% {
+                transform: scale(0.0);
+                -webkit-transform: scale(0.0);
+            } 50% {
+                  transform: scale(1.0);
+                  -webkit-transform: scale(1.0);
+              }
         }
     </style>
     <link href="../css/jquery.mCustomScrollbar.css" rel="stylesheet" type="text/css">
@@ -37,12 +77,14 @@
         11111111111111111111111111111<br>
         11111111111111111111111111111<br>
     </div>
-    <div class="scroll-pct">11111111</div>
+    <div class="scroll-pct">当前位置:0%</div>
     <script src="../js/jquery-1.9.1.js"></script>
     <script src="../js/jquery.mCustomScrollbar.js"></script>
     <script>
         (function($){
             $(window).load(function(){
+                var flag = true;
+                $('#content').append('<div class="spinner"> <div class="double-bounce1"></div> <div class="double-bounce2"></div> </div>');
 
                 $("#content").mCustomScrollbar({
                     scrollButtons:{
@@ -62,7 +104,7 @@
                     //theme:"rounded-dark",
                     autoDraggerLength: true,//根据内容区域自动调整滚动条拖块的长度 值:true,false
                     mouseWheelPixels: 40,//滚动一下移动的距离
-                    autoHideScrollbar:false,//是否自动隐藏滚动条
+                    autoHideScrollbar:true,//是否自动隐藏滚动条
                     callbacks: {
                         onScrollStart: function() {
                            // $('body').append('滚动开始//');
@@ -72,6 +114,14 @@
                         },
                         onTotalScroll: function() {
                             //$('body').append('滚动至底部//');
+                            var data = '<div style="width:300px;height:30px;background: red;"></div>';
+                            $(".spinner").remove();//移除加载图标
+                            $("#content .mCSB_container").append(data);//追加新内容
+                            if(flag){//如果flag为true，则追加加载图标。
+                                $('#content .mCSB_container').append('<div class="spinner"> <div class="double-bounce1"></div> <div class="double-bounce2"></div> </div>');
+
+                            }
+                            $("#content").mCustomScrollbar("update"); //update scrollbar according to newly appended content
                         },
                         onTotalScrollBack: function() {
                            // $('body').append('滚动至顶部//');
@@ -79,10 +129,10 @@
                         whileScrolling: function() {
                            // $('body').append('...滚动中...//');
 
-                            $(".scroll-pct").html(mcs.topPct+"%");
-                            //if(mcs.topPct>90){
-                            //    alert("触发ajax");
-                            //}
+                            $(".scroll-pct").html("当前位置:"+mcs.topPct+"%");
+                            if(mcs.topPct>=90){
+                                //
+                            }
                         },
                     },
 
