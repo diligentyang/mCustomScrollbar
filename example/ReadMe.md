@@ -98,7 +98,7 @@ callback：Boolean | 执行回调函数当 scroll-to 完成之后，值：true�
 
 调用 destroy 方法可以移除某个对象的自定义滚动条并且恢复默认样式
 
-我们可以这样来设置，如下代码：
+我们可以这样来设置滚动条样式，如下代码：
 
 .mCSB_1_scrollbar .mCSB_dragger .mCSB_dragger_bar{
 

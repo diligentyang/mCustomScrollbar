@@ -103,7 +103,7 @@
                     //theme:"3d",
                     //theme:"rounded-dark",
                     autoDraggerLength: true,//根据内容区域自动调整滚动条拖块的长度 值:true,false
-                    mouseWheelPixels: 40,//滚动一下移动的距离
+                    mouseWheelPixels: 100,//滚动一下移动的距离
                     autoHideScrollbar:true,//是否自动隐藏滚动条
                     callbacks: {
                         onScrollStart: function() {
@@ -114,6 +114,7 @@
                         },
                         onTotalScroll: function() {
                             //$('body').append('滚动至底部//');
+
                             var data = '<div style="width:300px;height:30px;background: red;"></div>';
                             $(".spinner").remove();//移除加载图标
                             $("#content .mCSB_container").append(data);//追加新内容
